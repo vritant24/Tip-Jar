@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "  $ %.2f", total);
         
         let number = NSString(string: numberPeople.text!).doubleValue
-        print(number);
+        
         let charge = total / number
         
         dividedTotal.text = String(format: "  $ %.2f", charge);
@@ -75,6 +75,22 @@ class ViewController: UIViewController {
         defaults = NSUserDefaults.standardUserDefaults().integerForKey("123")
         tipPercentage.selectedSegmentIndex = defaults
         
+        var tipPercentages = [0.18, 0.2, 0.22]
+        let billAmount = NSString(string: billField.text!).doubleValue
+        let tip = billAmount * tipPercentages[tipPercentage.selectedSegmentIndex]
+        let total = billAmount + tip
+        
+        finalTotal = total;
+        
+        tipLabel.text = String(format: "  $ %.2f", tip);
+        totalLabel.text = String(format: "  $ %.2f", total);
+        
+        let number = NSString(string: numberPeople.text!).doubleValue
+        
+        let charge = total / number
+        
+        dividedTotal.text = String(format: "  $ %.2f", charge);
+
         
     }
 }
